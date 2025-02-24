@@ -4,6 +4,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 project(Membot)
 
+set(CMAKE_CXX_FLAGS "-Os -ggdb3")
+
 find_package(wxWidgets REQUIRED COMPONENTS core base)
 include(${wxWidgets_USE_FILE})
 
