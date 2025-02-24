@@ -41,7 +41,32 @@ ChatBot::~ChatBot() {
 
 //// STUDENT CODE
 ////
+ChatBot::ChatBot(ChatBot const& other)
+    : _image(other._image),
+      _currentNode(other._currentNode),
+      _rootNode(other._rootNode),
+      _chatLogic(other._chatLogic) {
+  std::cerr << "ChatBot Copy Ctor\n";
+}
 
+ChatBot::ChatBot(ChatBot&& other) noexcept
+    : _image(std::move(other._image)),
+      _currentNode(std::move(other._currentNode)),
+      _rootNode(std::move(other._rootNode)),
+      _chatLogic(std::move(other._chatLogic)) {
+  std::cerr << "ChatBot Move Ctor\n";
+}
+
+ChatBot& ChatBot::operator=(ChatBot const& other) {
+  std::cerr << "ChatBot Assignment Op\n";
+  if (this != &other) {
+    _image = other._image;
+    _currentNode = other._currentNode;
+    _rootNode = other._rootNode;
+    _chatLogic = other._chatLogic;
+  }
+  return *this;
+}
 ////
 //// EOF STUDENT CODE
 
