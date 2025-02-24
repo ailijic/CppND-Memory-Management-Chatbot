@@ -2,6 +2,7 @@
 #include <random>
 #include <algorithm>
 #include <ctime>
+#include <cstdint>
 
 #include "chatlogic.h"
 #include "graphnode.h"
@@ -75,7 +76,7 @@ void ChatBot::ReceiveMessageFromUser(std::string message) {
   typedef std::pair<GraphEdge*, int> EdgeDist;
   std::vector<EdgeDist> levDists;  // format is <ptr,levDist>
 
-  for (size_t i = 0; i < _currentNode->GetNumberOfChildEdges(); ++i) {
+  for (int i = 0; i < _currentNode->GetNumberOfChildEdges(); ++i) {
     GraphEdge* edge = _currentNode->GetChildEdgeAtIndex(i);
     for (auto keyword : edge->GetKeywords()) {
       EdgeDist ed{edge, ComputeLevenshteinDistance(keyword, message)};

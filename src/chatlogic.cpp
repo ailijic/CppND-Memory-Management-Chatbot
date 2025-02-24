@@ -90,7 +90,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename) {
             lineStr.substr(posTokenFront + 1, posTokenBack - 1);
 
         // extract token type and info
-        int posTokenInfo = tokenStr.find(":");
+        size_t posTokenInfo = tokenStr.find(":");
         if (posTokenInfo != std::string::npos) {
           std::string tokenType = tokenStr.substr(0, posTokenInfo);
           std::string tokenInfo =

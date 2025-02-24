@@ -5,13 +5,14 @@
 #include "chatbot.h"
 #include "chatlogic.h"
 #include "chatgui.h"
+#include "define.h"
 
 // size of chatbot window
 const int width = 414;
 const int height = 736;
 
 // wxWidgets APP
-IMPLEMENT_APP(ChatBotApp);
+IMPLEMENT_APP(ChatBotApp)
 
 std::string dataPath = "../";
 std::string imgBasePath = dataPath + "images/";
@@ -75,6 +76,7 @@ ChatBotFrameImagePanel::ChatBotFrameImagePanel(wxFrame* parent)
     : wxPanel(parent) {}
 
 void ChatBotFrameImagePanel::paintEvent(wxPaintEvent& evt) {
+  UNUSED(evt);
   wxPaintDC dc(this);
   render(dc);
 }
@@ -165,6 +167,7 @@ void ChatBotPanelDialog::PrintChatbotResponse(std::string response) {
 }
 
 void ChatBotPanelDialog::paintEvent(wxPaintEvent& evt) {
+  UNUSED(evt);
   wxPaintDC dc(this);
   render(dc);
 }
