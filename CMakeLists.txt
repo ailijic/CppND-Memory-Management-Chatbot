@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 project(Membot)
 
-set(CMAKE_CXX_FLAGS "-Os -ggdb3 -Wall -Wextra -Wpedantic -Werror")
+set(CMAKE_CXX_FLAGS "-O0 -ggdb3 -Wall -Wextra -Wpedantic -Werror")
 
 find_package(wxWidgets REQUIRED COMPONENTS core base)
 include(${wxWidgets_USE_FILE})
