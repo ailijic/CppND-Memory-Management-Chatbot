@@ -131,9 +131,11 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename) {
             ////
 
             // check if node with this ID exists already
-            auto newNode = std::find_if(
-                _nodes.begin(), _nodes.end(),
-                [&id](std::unique_ptr<GraphNode> const& node) { return node->GetID() == id; });
+            auto newNode =
+                std::find_if(_nodes.begin(), _nodes.end(),
+                             [&id](std::unique_ptr<GraphNode> const& node) {
+                               return node->GetID() == id;
+                             });
 
             // create new element if ID does not yet exist
             if (newNode == _nodes.end()) {
@@ -173,7 +175,8 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename) {
                     return node->GetID() == std::stoi(parentToken->second);
                   });
               auto childNode = std::find_if(
-                  _nodes.begin(), _nodes.end(), [&childToken](std::unique_ptr<GraphNode> const& node) {
+                  _nodes.begin(), _nodes.end(),
+                  [&childToken](std::unique_ptr<GraphNode> const& node) {
                     return node->GetID() == std::stoi(childToken->second);
                   });
 
@@ -218,16 +221,16 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename) {
     if ((*it)->GetNumberOfParents() == 0) {
       if (rootNode == nullptr) {
         // rootNode = *it;  // assign current node to root
-        rootNode = (*it).get(); // assign current node to root
+        rootNode = (*it).get();  // assign current node to root
       } else {
         std::cout << "ERROR : Multiple root nodes detected" << std::endl;
       }
     }
   }
 
-   // create instance of chatbot
-   auto chatBot = std::make_unique<ChatBot>(std::move(*_chatBot));
-   _chatBot = chatBot.get();
+  // create instance of chatbot
+  auto chatBot = std::make_unique<ChatBot>(std::move(*_chatBot));
+  _chatBot = chatBot.get();
 
   // add chatbot to graph root node
   chatBot->SetRootNode(rootNode);
