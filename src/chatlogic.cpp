@@ -229,18 +229,11 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename) {
   }
 
   // create instance of chatbot
-  // auto chatBot = std::make_unique<ChatBot>(std::move(*_chatBot));
   ChatBot chat = {};
   auto chatbot = std::make_unique<ChatBot>(std::move(chat));
   *chatbot = std::move(*_chatBot);
-  //*_chatBot;
-  
-  // std::unique_ptr<ChatBot> chatBot2;
-  // k*chatBot2 = std::move(*chatBot);
-  //  *chatBot = std::move(*_chatBot);
   _chatBot = chatbot.get();
-  //auto chatBot2 = *_chatBot;
-
+ 
   // add chatbot to graph root node
   _chatBot->SetRootNode(rootNode);
   rootNode->MoveChatbotHere(std::move(chatbot));
