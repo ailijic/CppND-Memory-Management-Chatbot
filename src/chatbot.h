@@ -30,7 +30,7 @@ class ChatBot {
   ////
   ChatBot(ChatBot const& other);
   ChatBot(ChatBot&& other) noexcept;
-  ChatBot& operator=(ChatBot && other) noexcept;
+  ChatBot& operator=(ChatBot&& other) noexcept;
   ////
   //// EOF STUDENT CODE
 

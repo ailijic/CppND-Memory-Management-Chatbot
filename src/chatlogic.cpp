@@ -233,7 +233,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename) {
   auto chatbot = std::make_unique<ChatBot>(std::move(chat));
   *chatbot = std::move(*_chatBot);
   _chatBot = chatbot.get();
- 
+
   // add chatbot to graph root node
   _chatBot->SetRootNode(rootNode);
   rootNode->MoveChatbotHere(std::move(chatbot));
